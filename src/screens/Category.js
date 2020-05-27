@@ -10,6 +10,7 @@ import React from 'react';
 import {
     FlatList,
     StyleSheet,
+    Text,
     View,
 } from 'react-native';
 import ProductListItem from '../components/ProductionListItem';
@@ -37,11 +38,13 @@ export default class Category extends React.Component {
             this.setState({
                 products: res.data
             })
+        }).catch((e) => {
+
         })
     }
 
     render(): boolean | number | string | React$Element<*> | React$Portal | Iterable | null {
-        return (
+        if(this.state.products.length > 0)   return (
             <FlatList
                 numColumns={2}
                 contentContainerStyle={styles.container}
@@ -54,6 +57,12 @@ export default class Category extends React.Component {
                 keyExtractor={(item) => `${item.id}`}
             />
         );
+
+        return (
+            <View>
+                <Text>No product</Text>
+            </View>
+        )
     }
 }
 

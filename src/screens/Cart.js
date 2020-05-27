@@ -7,6 +7,8 @@
  */
 
 import React from 'react';
+// import { connect } from 'react-redux'
+
 import {
     StyleSheet,
     Text,
@@ -33,6 +35,9 @@ export default class Cart extends React.Component {
         return (
             <View>
                 <Text>Cart</Text>
+                <View>
+
+                </View>
             </View>
         );
     }

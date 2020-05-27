@@ -10,6 +10,7 @@ import React from 'react';
 import {
     FlatList,
     StyleSheet,
+    Text,
     View,
 } from 'react-native';
 
@@ -39,7 +40,8 @@ export default class Categories extends React.Component {
         const {navigation} = this.props;
         navigation.setOptions({ title: 'Home' });
 
-        return (
+        if(this.state.categories.length > 0)
+            return (
             <View style={styles.container}>
                 <FlatList data={categories}
                           renderItem={({item}) =>
@@ -52,6 +54,10 @@ export default class Categories extends React.Component {
                 />
             </View>
         );
+
+        return (<View>
+            <Text>No category</Text>
+        </View>)
     }
 }
 

@@ -38,7 +38,7 @@ export default class BaseService {
 
   async get (uri, params = {}) {
 
-    console.log(params)
+    // console.log(params)
     try {
       return await axios.get(this.getUrl(uri), { params: params })
     } catch (e) {

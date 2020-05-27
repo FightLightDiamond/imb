@@ -1,10 +1,35 @@
 import React from 'react';
 import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {connect} from 'react-redux';
+import {addToCart} from './actions/cartActions';
+
 
 export default class ProductListItem extends React.Component {
+
+    // connect(mapStateToProps,mapDispatchToProps);
+
     constructor(props) {
         super(props);
     }
+
+    handleClick = (id) => {
+        this.props.addToCart(id)
+    };
+
+    mapStateToProps = (state) => {
+        return {
+            items: state.items,
+        };
+    };
+
+    mapDispatchToProps = (dispatch) => {
+
+        return {
+            addToCart: (id) => {
+                dispatch(addToCart(id));
+            },
+        };
+    };
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {product, onAddToCartClick} = this.props;
@@ -12,14 +37,16 @@ export default class ProductListItem extends React.Component {
         return (
             <View style={styles.shadow}>
                 <View style={styles.container}>
-                    <Image style={styles.img} source={{url: product.image[0].url}} />
+                    <Image style={styles.img} source={{url: product.image[0].url}}/>
                     <View style={styles.info}>
                         <Text style={styles.name}>{product.name}</Text>
                         <View style={styles.priceRow}>
                             <Text style={styles.price}>{product.price}</Text>
                         </View>
                         <TouchableOpacity onPress={onAddToCartClick}>
-                            <Text style={styles.cartText}>Buy</Text>
+                            <Text onClick={() => {
+                                this.handleClick(product.id);
+                            }} style={styles.cartText}>Buy</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -47,30 +74,30 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         backgroundColor: '#FFF',
         overflow: 'hidden',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     info: {
-        padding: 8
+        padding: 8,
     },
     img: {
         // flex: 1,
         alignSelf: 'center',
-        width: win.width/2.7,
-        height: win.height/5.2,
+        width: win.width / 2.7,
+        height: win.height / 5.2,
         borderTopLeftRadius: 4,
         borderBottomLeftRadius: 4,
     },
     name: {
         fontSize: 16,
-        marginBottom: 8
+        marginBottom: 8,
     },
     priceRow: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     price: {
         fontSize: 16,
         color: '#888',
-        flex: 1
-    }
+        flex: 1,
+    },
 });
