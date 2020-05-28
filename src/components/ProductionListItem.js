@@ -1,34 +1,14 @@
 import React from 'react';
 import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {connect} from 'react-redux';
-import {addToCart} from './actions/cartActions';
 
 
 export default class ProductListItem extends React.Component {
-
-    // connect(mapStateToProps,mapDispatchToProps);
-
     constructor(props) {
         super(props);
     }
 
     handleClick = (id) => {
         this.props.addToCart(id)
-    };
-
-    mapStateToProps = (state) => {
-        return {
-            items: state.items,
-        };
-    };
-
-    mapDispatchToProps = (dispatch) => {
-
-        return {
-            addToCart: (id) => {
-                dispatch(addToCart(id));
-            },
-        };
     };
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {

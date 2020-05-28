@@ -1,5 +1,11 @@
 const Item = 'https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220553.jpeg';
-import {ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY, ADD_SHIPPING} from '../actions/action-types/cart-actions';
+import {
+    ADD_TO_CART,
+    REMOVE_ITEM,
+    SUB_QUANTITY,
+    ADD_QUANTITY,
+    ADD_SHIPPING,
+} from '../actions/action-types/CartActionType';
 
 const initState = {
     items: [
@@ -51,7 +57,6 @@ const initState = {
 
 };
 const cartReducer = (state = initState, action) => {
-    //INSIDE HOME COMPONENT
     if (action.type === ADD_TO_CART) {
         let addedItem = state.items.find(item => item.id === action.id);
         //check if the action id exists in the addedItems
@@ -82,7 +87,7 @@ const cartReducer = (state = initState, action) => {
 
         //calculating the total
         let newTotal = state.total - (itemToRemove.price * itemToRemove.quantity);
-        console.log(itemToRemove);
+        //console.log(itemToRemove);
         return {
             ...state,
             addedItems: new_items,
@@ -135,9 +140,9 @@ const cartReducer = (state = initState, action) => {
             ...state,
             total: state.total - 6,
         };
-    } else {
-        return state;
     }
+
+    return state;
 
 };
 

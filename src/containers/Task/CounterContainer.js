@@ -7,22 +7,13 @@
  */
 
 import React from 'react';
-import {
-    Button,
-    StyleSheet,
-    Text,
-    View,
-} from 'react-native';
 import {connect} from 'react-redux'
-import Counter from '../components/Task/Counter';
+import Counter from '../../components/Task/Counter';
+import {addNumber, subNumber} from '../../store/actions/CouterAction'
 
 class CounterContainer extends React.Component {
     constructor(props) {
         super(props);
-    }
-
-    componentDidMount(): * {
-
     }
 
     render(): boolean | number | string | React$Element<*> | React$Portal | Iterable | null {
@@ -36,31 +27,6 @@ class CounterContainer extends React.Component {
                 subNumber={subNumber}
             />
         )
-    }
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'stretch',
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        paddingTop: 0
-    }
-});
-
-// Action
-const addNumber = (addVal) => {
-    return {
-        type: 'ADD_NUMBER',
-        value: addVal
-    }
-}
-
-const subNumber = (subVal) => {
-    return {
-        type: 'SUB_NUMBER',
-        value: subVal
     }
 }
 

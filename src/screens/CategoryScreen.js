@@ -16,7 +16,7 @@ import {
 import ProductListItem from '../components/ProductionListItem';
 import FactoryService from '../services/FactoryService';
 
-export default class Category extends React.Component {
+export default class CategoryScreen extends React.Component {
 
     constructor(props) {
         super(props);

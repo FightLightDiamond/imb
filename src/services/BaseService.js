@@ -87,7 +87,7 @@ export default class BaseService {
   }
 
   errorMsg (e) {
-    console.log(e)
+    //console.log(e)
     if (e.response === undefined) {
       e.status = 0
       e.statusText = e.message
@@ -106,7 +106,7 @@ export default class BaseService {
       validationErrors = e.response.data
     }
 
-    console.log('validationErrors', validationErrors);
+    //console.log('validationErrors', validationErrors);
 
     return { data: e.response }
   }

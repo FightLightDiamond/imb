@@ -1,5 +1,6 @@
 import React from 'react';
 import {AppNavigator} from './src/AppNavigator';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -8,7 +9,9 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <AppNavigator/>
+            <PaperProvider>
+                <AppNavigator/>
+            </PaperProvider>
         );
     }
 }
