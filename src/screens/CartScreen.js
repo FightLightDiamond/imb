@@ -7,38 +7,38 @@
  */
 
 import React from 'react';
-// import { connect } from 'react-redux'
-
 import {
     StyleSheet,
-    Text,
     View,
 } from 'react-native';
+import {Provider} from 'react-redux';
+import AddView from '../containers/Task/AddViewContainer'
+import CounterContainer from '../containers/Task/CounterContainer';
+import TaskFlatList from '../containers/Task/TaskFlatListContainer'
+import CartContainer from '../containers/CartContainer'
+import store from '../store/store';
 
 export default class Cart extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-
-        };
+        this.state = {};
     }
 
     componentDidMount(): * {
         const {navigation} = this.props;
-        const {route} = this.props;
-        const {params} = route;
         navigation.setOptions({title: 'Cart'});
     }
 
     render(): boolean | number | string | React$Element<*> | React$Portal | Iterable | null {
         return (
-            <View>
-                <Text>Cart</Text>
-                <View>
-
+            <Provider store={store}>
+                <View style={styles.container}>
+                    <CartContainer/>
+                    {/*<AddView/>*/}
+                    {/*<CounterContainer/>*/}
+                    {/*<TaskFlatList/>*/}
                 </View>
-            </View>
+            </Provider>
         );
     }
 }

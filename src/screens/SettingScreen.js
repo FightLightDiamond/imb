@@ -18,7 +18,7 @@ import {GetHubs, GetDistricts, GetWards} from '../mock-db/ghn';
 
 // console.log('GetHubs', GetHubs);
 
-export default class Setting extends React.Component {
+export default class SettingScreen extends React.Component {
     constructor(props) {
         super(props);
 
@@ -46,7 +46,6 @@ export default class Setting extends React.Component {
         const hubs = await request.GetHubs(GetHubs);
         const districts = await request.GetDistricts(GetDistricts);
         const wards = await request.GetWards(GetWards);
-        console.log('wards', wards)
 
         this.setState({
             hubs: hubs.data.data,
@@ -65,8 +64,6 @@ export default class Setting extends React.Component {
             provinces[s.ProvinceID] = s.ProvinceName;
             return <Picker.Item key={i} value={s.DistrictID} label={s.DistrictName}/>;
         });
-
-        console.log('provinces', provinces);
 
         let provinceArray = [];
         Object.keys(provinces).forEach(function (k) {
@@ -138,7 +135,6 @@ export default class Setting extends React.Component {
     }
 
     changeDistrict(itemValue) {
-        console.log('itemValue', itemValue);
         this.setState({
             DistrictID: itemValue,
         });
