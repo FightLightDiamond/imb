@@ -1,106 +1,146 @@
 import React from 'react';
 import {
-    Alert, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View,
+    FlatList,
+    StyleSheet,
+    TouchableOpacity, View, ScrollView
 } from 'react-native';
+import {Card, Button, Title, Paragraph, List, Subheading, IconButton} from 'react-native-paper';
+import {Col, Row, Grid} from 'react-native-easy-grid';
 
-import { Button, DataTable } from 'react-native-paper';
 
 export default class Cart extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            tableHead: ['Head', 'Head2', 'Head3', 'Head4'],
-            tableData: [
-                ['1', '2', '3', '4'],
-                ['a', 'b', 'c', 'd'],
-                ['1', '2', '3', '456\n789'],
-                ['a', 'b', 'c', 'd']
-            ]
-        }
     }
 
-    products(datum, key) {
+    products(datum) {
         const {onAddToCart} = this.props;
+
         return (
-            <View key={key}>
-                {/*<Text>{datum.id}</Text>*/}
-                <Text>{datum.title}</Text>
-                <TouchableOpacity onPress={() => onAddToCart(datum.id)}>
-                    <Text style={{color: 'blue'}}>Add</Text>
-                </TouchableOpacity>
+            <View style={styles.wrapper}>
+                <View key={datum.id}>
+                <Card>
+                    <Card.Cover source={{uri: datum.img}}/>
+                    <Card.Content>
+                        <Title>{datum.title}</Title>
+                        <Paragraph>{datum.price}</Paragraph>
+                    </Card.Content>
+                    <Card.Actions>
+                        <Button onPress={() => onAddToCart(datum.id)}>Add Cart</Button>
+                    </Card.Actions>
+                </Card>
+                </View>
             </View>
+
         );
     }
 
-    cart(datum, key) {
+    cart(datum) {
         const {onRemoveItem, onAddQuantity, onSubtractQuantity} = this.props;
         return (
-            <View key={key}>
-                {/*<Text>{datum.id}</Text>*/}
-                <Text>{datum.title}</Text>
-                <TouchableOpacity onPress={() => onRemoveItem(datum.id)}>
-                    <Text style={{color: 'blue'}}>Remove</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => onAddQuantity(datum.id)}>
-                    <Text style={{color: 'blue'}}>Add</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => onSubtractQuantity(datum.id)}>
-                    <Text style={{color: 'blue'}}>Sub</Text>
-                </TouchableOpacity>
-            </View>
+            <Row style={{padding: 3}}>
+                <Col size={3} style={{paddingHorizontal: 2}}>
+                    <Card.Cover source={{uri: datum.img}}/>
+                </Col>
+
+                <Col size={5} style={{paddingHorizontal: 5, flexDirection: 'column', justifyContent: 'flex-start'}}>
+                    <View style={{paddingLeft: 15}}>
+                        <Subheading>{datum.title}</Subheading>
+                        <Subheading>{datum.price} Đ</Subheading>
+                        <Subheading onPress={() => onRemoveItem(datum.id)} style={{color: 'red'}}>Xóa</Subheading>
+                    </View>
+                </Col>
+
+                <Col size={1} style={{
+                    paddingHorizontal: 2,
+                    flexDirection: 'column',
+                    justifyContent: 'flex-start',
+                    alignItems: 'center'
+                }}>
+                    <TouchableOpacity onPress={() => onAddQuantity(datum.id)}>
+                        <IconButton icon="arrow-up" color={"grey"}/>
+                    </TouchableOpacity>
+                    <Subheading>{datum.quantity}</Subheading>
+                    <TouchableOpacity onPress={() => onSubtractQuantity(datum.id)}>
+                        <IconButton icon="arrow-down" color={"grey"}/>
+                    </TouchableOpacity>
+                </Col>
+            </Row>
         );
     }
+
+
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {cart} = this.props;
 
-        let productTable = cart.items.map((datum, key) => {
-            return this.products(datum, key);
-        });
+        const getItem = (data, index) => {
+           return data[index]
+        }
 
-        let cartTable = cart.addedItems.map((datum, key) => {
-            return this.cart(datum, key);
-        });
-        const state = this.state;
+        const getItemCount = (data) => {
+            return data.length;
+        }
+
+        let productTable = (<FlatList
+            // initialNumToRender={2}
+            numColumns={2}
+            contentContainerStyle={styles.container}
+            data={cart.items}
+            // getItemCount={getItemCount}
+            // getItem={getItem}
+            renderItem={
+                ({item}) => this.products(item)
+            }
+            keyExtractor={(item) => `${item.id}`}
+        />);
+
+        let cartTable = <FlatList
+            initialNumToRender={4}
+            contentContainerStyle={styles.container}
+            data={cart.addedItems}
+            renderItem={
+                ({item}) => this.cart(item)
+            }
+            // getItemCount={getItemCount}
+            // getItem={getItem}
+            keyExtractor={(item) => `${item.id}`}
+        />;
+
         return (
-            <View>
-                <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-                    Press me
-                </Button>
-                <DataTable>
-                    <DataTable.Header>
-                        <DataTable.Title>Dessert</DataTable.Title>
-                        <DataTable.Title numeric>Calories</DataTable.Title>
-                        <DataTable.Title numeric>Fat</DataTable.Title>
-                    </DataTable.Header>
+            <View style={styles.container}>
+                <ScrollView>
+                    <View style={styles.cart}>
+                        <Grid>
+                            {cartTable}
+                        </Grid>
+                    </View>
 
-                    <DataTable.Row>
-                        <DataTable.Cell>Frozen yogurt</DataTable.Cell>
-                        <DataTable.Cell numeric>159</DataTable.Cell>
-                        <DataTable.Cell numeric>6.0</DataTable.Cell>
-                    </DataTable.Row>
-
-                    <DataTable.Row>
-                        <DataTable.Cell>Ice cream sandwich</DataTable.Cell>
-                        <DataTable.Cell numeric>237</DataTable.Cell>
-                        <DataTable.Cell numeric>8.0</DataTable.Cell>
-                    </DataTable.Row>
-
-                    <DataTable.Pagination
-                        page={1}
-                        numberOfPages={3}
-                        onPageChange={(page) => { console.log(page); }}
-                        label="1-2 of 6"
-                    />
-                </DataTable>
+                    {/*<SafeAreaView>*/}
+                        {productTable}
+                    {/*</SafeAreaView>*/}
+                </ScrollView>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-    head: { height: 40, backgroundColor: '#f1f8ff' },
-    text: { margin: 6 }
+    cart: {
+        paddingHorizontal: 8,
+    },
+    container: {
+        paddingTop: 16,
+        marginBottom: 20,
+        borderRadius: 4,
+        backgroundColor: '#FFF',
+        overflow: 'scroll',
+    },
+    head: {height: 40, backgroundColor: '#f1f8ff'},
+    text: {margin: 6},
+    wrapper: {
+        flex: 1,
+        padding: 8,
+    },
 });

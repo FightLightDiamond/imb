@@ -69,9 +69,6 @@ export default class CategoryScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // alignItems: 'stretch',
-        // backgroundColor: '#fff',
-        // justifyContent: 'center',
         paddingTop: 16,
         paddingLeft: 8,
         paddingRight: 8,

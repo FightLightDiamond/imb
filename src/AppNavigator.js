@@ -6,9 +6,9 @@ import CartScreen from './screens/CartScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import OrdersScreen from './screens/OrdersScreen';
+import LoginScreen from './screens/LoginScreen';
 import SettingScreen from './screens/SettingScreen';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export const AppNavigator = () => {
     const CartStack = createStackNavigator();
@@ -37,6 +37,10 @@ export const AppNavigator = () => {
             <CategoryStack.Screen
                 name="Category"
                 component={CategoryScreen}
+            />
+            <CategoryStack.Screen
+                name="Login"
+                component={LoginScreen}
             />
         </CategoryStack.Navigator>);
     };
@@ -89,21 +93,20 @@ export const AppNavigator = () => {
     return (
         <NavigationContainer>
             <Tab.Navigator
-                // screenOptions={({route}) => ({
-                //     tabBarIcon: ({focused, color, size}) => {
-                //         // console.log(' alert(route)', route)
-                //         let iconName = focused
-                //             ? icons['focused'][route.name]
-                //             : icons['normal'][route.name];
-                //
-                //         // You can return any component that you like here!
-                //         return <MaterialIcons name={iconName} size={size} color={color}/>;
-                //     },
-                // })}
-                // tabBarOptions={{
-                //     activeTintColor: 'green',
-                //     inactiveTintColor: 'gray',
-                // }}
+                screenOptions={({route}) => ({
+                    tabBarIcon: ({focused, color, size}) => {
+                        let iconName = focused
+                            ? icons['focused'][route.name]
+                            : icons['normal'][route.name];
+
+                        // You can return any component that you like here!
+                        return <MaterialIcons name={iconName} size={size} color={color}/>;
+                    },
+                })}
+                tabBarOptions={{
+                    activeTintColor: 'green',
+                    inactiveTintColor: 'gray',
+                }}
             >
                 <Tab.Screen name="Home" component={CategoryStackScreen}/>
                 <Tab.Screen name="Cart" component={CartStackScreen}/>

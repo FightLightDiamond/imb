@@ -11,12 +11,11 @@ import {
     StyleSheet,
     Text,
     View,
-    Picker,
 } from 'react-native';
+import {Picker} from "@react-native-community/picker"
 import FactoryService from '../services/FactoryService';
 import {GetHubs, GetDistricts, GetWards} from '../mock-db/ghn';
-
-// console.log('GetHubs', GetHubs);
+import {List} from "react-native-paper"
 
 export default class SettingScreen extends React.Component {
     constructor(props) {
@@ -74,8 +73,14 @@ export default class SettingScreen extends React.Component {
             return <Picker.Item key={i} value={s.id} label={s.name}/>;
         });
 
+        const {navigation} = this.props;
+
         return (
             <View>
+                <List.Item
+                    onPress={() => navigation.navigate('Login')}
+                    title="Login"
+                   />
                 <Text>Setting</Text>
                 <View>
                     <Text>

@@ -77,6 +77,8 @@ target 'imb' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+
+
   target 'imbTests' do
     inherit! :complete
     # Pods for testing
@@ -102,3 +104,5 @@ target 'imb-tvOS' do
     # Pods for testing
   end
 end
+
+pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
