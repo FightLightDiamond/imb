@@ -13,7 +13,7 @@ import {
     View,
     Text,
     TextInput,
-    Button
+    Button,
 } from 'react-native';
 import {Provider} from 'react-redux';
 import store from '../store/store';
@@ -31,15 +31,15 @@ export default class LoginScreen extends React.Component {
     componentWillMount(): * {
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
             this.setState({
-                email: 'b@gmail.com'
-            })
-        })
+                email: 'b@gmail.com',
+            });
+        });
 
         this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
             this.setState({
-                email: 'a@gmail.com'
-            })
-        })
+                email: 'a@gmail.com',
+            });
+        });
     }
 
     componentWillUnmount(): * {
@@ -57,41 +57,40 @@ export default class LoginScreen extends React.Component {
                 <View>
                     <Text>Login</Text>
                     <Text>{this.state.email}</Text>
-
                 </View>
                 <View>
                     <TextInput style={styles.textInput}
                                value={this.state.email}
-                        keyboardType={'email-address'}
+                               keyboardType={'email-address'}
                                placeholder={'Enter your email'}
                                placeholderTextColor={'red'}
                                onChangeText={
                                    (text) => {
                                        this.setState({
-                                           email: text
-                                       })
+                                           email: text,
+                                       });
                                    }
                                }
                     />
                 </View>
                 <View>
                     <TextInput style={styles.textInput}
-                        keyboardType={'default'}
+                               keyboardType={'default'}
                                placeholder={'Enter your password'}
                                placeholderTextColor={'red'}
                                secureTextEntry={true}
                                onChangeText={
                                    (text) => {
                                        this.setState({
-                                           password: text
-                                       })
+                                           password: text,
+                                       });
                                    }
                                }
                     />
                 </View>
                 <View>
                     <TextInput style={styles.area}
-                        keyboardType={'default'}
+                               keyboardType={'default'}
                                placeholder={'Enter your password'}
                                placeholderTextColor={'red'}
                                secureTextEntry={true}
@@ -103,8 +102,8 @@ export default class LoginScreen extends React.Component {
                                onChangeText={
                                    (text) => {
                                        this.setState({
-                                           note: text
-                                       })
+                                           note: text,
+                                       });
                                    }
                                }
                     />
@@ -112,8 +111,7 @@ export default class LoginScreen extends React.Component {
                 <View style={
                     {
                         flex: 1,
-                        // justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
                     }
                 }>
                     <View style={
@@ -122,12 +120,12 @@ export default class LoginScreen extends React.Component {
                             padding: 3,
                             borderRadius: 16,
                             shadowRadius: 20,
-                            shadowOpacity: 0.5
+                            shadowOpacity: 0.5,
                         }
                     }>
                         <Button
                             color={'white'}
-                            title={"Login"}
+                            title={'Login'}
                         />
                     </View>
                 </View>
@@ -142,7 +140,7 @@ const styles = StyleSheet.create({
         height: 30,
         margin: 20,
         borderColor: 'gray',
-        borderWidth: 1
+        borderWidth: 1,
     },
     area: {
         height: 100,
@@ -150,7 +148,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         borderBottomColor: 'green',
-        borderBottomWidth: 3
+        borderBottomWidth: 3,
     },
     container: {
         flex: 1,

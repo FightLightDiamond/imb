@@ -1,40 +1,22 @@
 import React from 'react';
 import {
     FlatList,
+    Image,
     StyleSheet,
-    TouchableOpacity, View, ScrollView
+    TouchableOpacity,
+    TouchableHighlight,
+    View, ScrollView,
 } from 'react-native';
-import {Card, Button, Title, Paragraph, List, Subheading, IconButton} from 'react-native-paper';
+import {Card, Subheading, IconButton} from 'react-native-paper';
 import {Col, Row, Grid} from 'react-native-easy-grid';
-import ProductList from './Shop/ProductList'
+import ProductList from './Shop/ProductList';
+import AddProduct from './Product/AddProduct';
 
 export default class Cart extends React.Component {
 
     constructor(props) {
         super(props);
     }
-
-    // products(datum) {
-    //     const {onAddToCart} = this.props;
-    //
-    //     return (
-    //         <View style={styles.wrapper}>
-    //             <View key={datum.id}>
-    //             <Card>
-    //                 <Card.Cover source={{uri: datum.img}}/>
-    //                 <Card.Content>
-    //                     <Title>{datum.title}</Title>
-    //                     <Paragraph>{datum.price}</Paragraph>
-    //                 </Card.Content>
-    //                 <Card.Actions>
-    //                     <Button onPress={() => onAddToCart(datum.id)}>Add Cart</Button>
-    //                 </Card.Actions>
-    //             </Card>
-    //             </View>
-    //         </View>
-    //
-    //     );
-    // }
 
     cart(datum) {
         const {onRemoveItem, onAddQuantity, onSubtractQuantity} = this.props;
@@ -56,32 +38,26 @@ export default class Cart extends React.Component {
                     paddingHorizontal: 2,
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
-                    alignItems: 'center'
+                    alignItems: 'center',
                 }}>
                     <TouchableOpacity onPress={() => onAddQuantity(datum.id)}>
-                        <IconButton icon="arrow-up" color={"grey"}/>
+                        <IconButton icon="arrow-up" color={'grey'}/>
                     </TouchableOpacity>
                     <Subheading>{datum.quantity}</Subheading>
                     <TouchableOpacity onPress={() => onSubtractQuantity(datum.id)}>
-                        <IconButton icon="arrow-down" color={"grey"}/>
+                        <IconButton icon="arrow-down" color={'grey'}/>
                     </TouchableOpacity>
                 </Col>
             </Row>
         );
     }
 
+    _onPressAdd = () => {
+        this.refs.addProduct.showAddProduct();
+    }
+
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {cart, onAddToCart} = this.props;
-
-        // let productTable = (<FlatList
-        //     numColumns={2}
-        //     contentContainerStyle={styles.container}
-        //     data={cart.items}
-        //     renderItem={
-        //         ({item}) => this.products(item)
-        //     }
-        //     keyExtractor={(item) => `${item.id}`}
-        // />);
 
         let cartTable = <FlatList
             initialNumToRender={4}
@@ -96,14 +72,34 @@ export default class Cart extends React.Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
+                    <View style={{
+                        backgroundColor: 'tomato',
+                        height: 64,
+                        flexDirection: 'row',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                    }}>
+                        <TouchableHighlight
+                            style={{marginRight: 10}}
+                            underlayColor={'tomato'}
+                            onPress={this._onPressAdd}
+                        >
+                            <Image source={{
+                                url: 'https://png.pngtree.com/png-vector/20190214/ourmid/pngtree-vector-plus-icon-png-image_515260.jpg',
+                            }}
+                                   style={{width: 35, height: 35}}/>
+                        </TouchableHighlight>
+                    </View>
                     <View style={styles.cart}>
                         <Grid>
                             {cartTable}
                         </Grid>
                     </View>
 
-                    <ProductList items={cart.items} onAddToCart={onAddToCart} />
+                    <ProductList items={cart.items} onAddToCart={onAddToCart}/>
+
                 </ScrollView>
+                <AddProduct ref={'addProduct'} />
             </View>
         );
     }
@@ -114,11 +110,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
     },
     container: {
-        paddingTop: 16,
-        marginBottom: 20,
-        borderRadius: 4,
-        backgroundColor: '#FFF',
-        overflow: 'scroll',
+        // marginTop: Platform.OS === 'ios'? 34: 0,
     },
     head: {height: 40, backgroundColor: '#f1f8ff'},
     text: {margin: 6},

@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Product from './Product'
 
-export default class ProductList extends React.Component {
+export default class HorizontalProductList extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -15,8 +15,7 @@ export default class ProductList extends React.Component {
         const {items, onAddToCart} = this.props;
 
         let productTable = (<FlatList
-            horizontal={true}
-            // numColumns={2}
+            numColumns={2}
             contentContainerStyle={styles.container}
             data={items}
             renderItem={
