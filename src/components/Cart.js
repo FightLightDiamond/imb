@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import {Card, Button, Title, Paragraph, List, Subheading, IconButton} from 'react-native-paper';
 import {Col, Row, Grid} from 'react-native-easy-grid';
-
+import ProductList from './Shop/ProductList'
 
 export default class Cart extends React.Component {
 
@@ -14,27 +14,27 @@ export default class Cart extends React.Component {
         super(props);
     }
 
-    products(datum) {
-        const {onAddToCart} = this.props;
-
-        return (
-            <View style={styles.wrapper}>
-                <View key={datum.id}>
-                <Card>
-                    <Card.Cover source={{uri: datum.img}}/>
-                    <Card.Content>
-                        <Title>{datum.title}</Title>
-                        <Paragraph>{datum.price}</Paragraph>
-                    </Card.Content>
-                    <Card.Actions>
-                        <Button onPress={() => onAddToCart(datum.id)}>Add Cart</Button>
-                    </Card.Actions>
-                </Card>
-                </View>
-            </View>
-
-        );
-    }
+    // products(datum) {
+    //     const {onAddToCart} = this.props;
+    //
+    //     return (
+    //         <View style={styles.wrapper}>
+    //             <View key={datum.id}>
+    //             <Card>
+    //                 <Card.Cover source={{uri: datum.img}}/>
+    //                 <Card.Content>
+    //                     <Title>{datum.title}</Title>
+    //                     <Paragraph>{datum.price}</Paragraph>
+    //                 </Card.Content>
+    //                 <Card.Actions>
+    //                     <Button onPress={() => onAddToCart(datum.id)}>Add Cart</Button>
+    //                 </Card.Actions>
+    //             </Card>
+    //             </View>
+    //         </View>
+    //
+    //     );
+    // }
 
     cart(datum) {
         const {onRemoveItem, onAddQuantity, onSubtractQuantity} = this.props;
@@ -70,31 +70,18 @@ export default class Cart extends React.Component {
         );
     }
 
-
-
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const {cart} = this.props;
+        const {cart, onAddToCart} = this.props;
 
-        const getItem = (data, index) => {
-           return data[index]
-        }
-
-        const getItemCount = (data) => {
-            return data.length;
-        }
-
-        let productTable = (<FlatList
-            // initialNumToRender={2}
-            numColumns={2}
-            contentContainerStyle={styles.container}
-            data={cart.items}
-            // getItemCount={getItemCount}
-            // getItem={getItem}
-            renderItem={
-                ({item}) => this.products(item)
-            }
-            keyExtractor={(item) => `${item.id}`}
-        />);
+        // let productTable = (<FlatList
+        //     numColumns={2}
+        //     contentContainerStyle={styles.container}
+        //     data={cart.items}
+        //     renderItem={
+        //         ({item}) => this.products(item)
+        //     }
+        //     keyExtractor={(item) => `${item.id}`}
+        // />);
 
         let cartTable = <FlatList
             initialNumToRender={4}
@@ -103,8 +90,6 @@ export default class Cart extends React.Component {
             renderItem={
                 ({item}) => this.cart(item)
             }
-            // getItemCount={getItemCount}
-            // getItem={getItem}
             keyExtractor={(item) => `${item.id}`}
         />;
 
@@ -117,9 +102,7 @@ export default class Cart extends React.Component {
                         </Grid>
                     </View>
 
-                    {/*<SafeAreaView>*/}
-                        {productTable}
-                    {/*</SafeAreaView>*/}
+                    <ProductList items={cart.items} onAddToCart={onAddToCart} />
                 </ScrollView>
             </View>
         );

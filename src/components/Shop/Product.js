@@ -1,13 +1,12 @@
 import React from 'react';
 import {
     StyleSheet,
-    TouchableOpacity, View,
+    View,
 } from 'react-native';
 import {Card, Button, Title, Paragraph} from 'react-native-paper';
 
 
-export default class ProductList extends React.Component {
-
+export default class Product extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -35,13 +34,6 @@ export default class ProductList extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 16,
-        marginBottom: 20,
-        borderRadius: 4,
-        backgroundColor: '#FFF',
-        overflow: 'scroll',
-    },
     wrapper: {
         flex: 1,
         padding: 8,
