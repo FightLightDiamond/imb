@@ -79,6 +79,8 @@ target 'imb' do
 
 
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+
   target 'imbTests' do
     inherit! :complete
     # Pods for testing
