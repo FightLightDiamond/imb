@@ -28,11 +28,10 @@ static void InitializeFlipper(UIApplication *application) {
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   
-  // Add me --- \/
   if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
-  // Add me --- /\
+
 #if DEBUG
   InitializeFlipper(application);
 #endif

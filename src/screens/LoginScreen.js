@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
     Keyboard,
@@ -17,6 +9,7 @@ import {
 } from 'react-native';
 import {Provider} from 'react-redux';
 import store from '../store/store';
+import firebase from 'react-native-firebase';
 
 export default class LoginScreen extends React.Component {
     constructor(props) {
