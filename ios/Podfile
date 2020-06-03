@@ -80,6 +80,10 @@ target 'imb' do
 
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
 
   target 'imbTests' do
     inherit! :complete
