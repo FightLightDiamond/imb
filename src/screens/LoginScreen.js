@@ -9,12 +9,13 @@ import {
 } from 'react-native';
 import {Provider} from 'react-redux';
 import store from '../store/store';
-import firebase from 'react-native-firebase';
+import firebase from 'react-native-firebase'
 
 export default class LoginScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            isAuthenticated: false,
             email: '',
             password: '',
             note: '',
@@ -22,17 +23,17 @@ export default class LoginScreen extends React.Component {
     }
 
     componentWillMount(): * {
-        this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-            this.setState({
-                email: 'b@gmail.com',
-            });
-        });
-
-        this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-            this.setState({
-                email: 'a@gmail.com',
-            });
-        });
+        // this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
+        //     this.setState({
+        //         email: 'b@gmail.com',
+        //     });
+        // });
+        //
+        // this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+        //     this.setState({
+        //         email: 'a@gmail.com',
+        //     });
+        // });
     }
 
     componentWillUnmount(): * {
@@ -42,6 +43,29 @@ export default class LoginScreen extends React.Component {
     componentDidMount(): * {
         const {navigation} = this.props;
         navigation.setOptions({title: 'Login'});
+    }
+
+    onGuest() {
+        firebase.auth().signInAnonymously().then((res) => {
+            console.log(res)
+            this.state = {
+                isAuthenticated: false
+            }
+        }).catch((error) => {
+            console.log(`Login failed. Error = ${error}`)
+        })
+    }
+
+    onLogin() {
+
+    }
+
+    onRegister() {
+
+    }
+
+    onLoginWithFacebook() {
+
     }
 
     render(): boolean | number | string | React$Element<*> | React$Portal | Iterable | null {
@@ -101,27 +125,11 @@ export default class LoginScreen extends React.Component {
                                }
                     />
                 </View>
-                <View style={
-                    {
-                        flex: 1,
-                        alignItems: 'center',
-                    }
-                }>
-                    <View style={
-                        {
-                            backgroundColor: 'green',
-                            padding: 3,
-                            borderRadius: 16,
-                            shadowRadius: 20,
-                            shadowOpacity: 0.5,
-                        }
-                    }>
-                        <Button
-                            color={'white'}
-                            title={'Login'}
-                        />
-                    </View>
-                </View>
+
+                <Button onPress={this.onGuest()} title={'Guest'}/>
+                <Button onPress={this.onLogin()} title={'Login'}/>
+                <Button onPress={this.onLoginWithFacebook()} title={'Login with Facebook'}/>
+                <Button onPress={this.onRegister()} title={'Register'}/>
 
             </Provider>
         );
