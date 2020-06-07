@@ -81,6 +81,10 @@ export default class SettingScreen extends React.Component {
                     onPress={() => navigation.navigate('Login')}
                     title="Login"
                    />
+                <List.Item
+                    onPress={() => navigation.navigate('Todo')}
+                    title="Todo"
+                   />
                 <Text>Setting</Text>
                 <View>
                     <Text>

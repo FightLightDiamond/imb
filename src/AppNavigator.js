@@ -7,6 +7,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import LoginScreen from './screens/LoginScreen';
+import TodoScreen from './screens/TodoScreen';
 import SettingScreen from './screens/SettingScreen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -41,6 +42,10 @@ export const AppNavigator = () => {
             <CategoryStack.Screen
                 name="Login"
                 component={LoginScreen}
+            />
+            <CategoryStack.Screen
+                name="Todo"
+                component={TodoScreen}
             />
         </CategoryStack.Navigator>);
     };
