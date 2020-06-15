@@ -8,9 +8,9 @@ import {
     View,
     Button,
 } from 'react-native';
-
-import {Picker} from '@react-native-community/picker';
-import {List} from 'react-native-paper';
+//
+// import {Picker} from '@react-native-community/picker';
+// import {List} from 'react-native-paper';
 import firebase from 'react-native-firebase';
 
 

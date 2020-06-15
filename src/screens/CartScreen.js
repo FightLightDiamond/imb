@@ -1,20 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
-    StyleSheet,
+    // StyleSheet,
     View,
 } from 'react-native';
 import {Provider} from 'react-redux';
-import AddView from '../containers/Task/AddViewContainer'
-import CounterContainer from '../containers/Task/CounterContainer';
-import TaskFlatList from '../containers/Task/TaskFlatListContainer'
+// import AddView from '../containers/Task/AddViewContainer'
+// import CounterContainer from '../containers/Task/CounterContainer';
+// import TaskFlatList from '../containers/Task/TaskFlatListContainer'
 import CartContainer from '../containers/CartContainer'
 import store from '../store/store';
 
@@ -43,15 +35,15 @@ export default class CartScreen extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 16,
-        paddingLeft: 8,
-        paddingRight: 8,
-    },
-    wrapper: {
-        flex: 1,
-        paddingHorizontal: 8,
-    },
-});
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         paddingTop: 16,
+//         paddingLeft: 8,
+//         paddingRight: 8,
+//     },
+//     wrapper: {
+//         flex: 1,
+//         paddingHorizontal: 8,
+//     },
+// });

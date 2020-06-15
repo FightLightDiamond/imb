@@ -15,8 +15,8 @@ export default class ProductList extends React.Component {
         const {items, onAddToCart} = this.props;
 
         let productTable = (<FlatList
-            horizontal={true}
-            // numColumns={2}
+            // horizontal={true}
+            numColumns={2}
             contentContainerStyle={styles.container}
             data={items}
             renderItem={

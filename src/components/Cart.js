@@ -3,6 +3,7 @@ import {
     FlatList,
     Image,
     StyleSheet,
+    Text,
     TouchableOpacity,
     TouchableHighlight,
     View, ScrollView,
@@ -18,8 +19,9 @@ export default class Cart extends React.Component {
         super(props);
     }
 
-    cart(datum) {
+    cartView(datum) {
         const {onRemoveItem, onAddQuantity, onSubtractQuantity} = this.props;
+
         return (
             <Row style={{padding: 3}}>
                 <Col size={3} style={{paddingHorizontal: 2}}>
@@ -64,7 +66,7 @@ export default class Cart extends React.Component {
             contentContainerStyle={styles.container}
             data={cart.addedItems}
             renderItem={
-                ({item}) => this.cart(item)
+                ({item}) => this.cartView(item)
             }
             keyExtractor={(item) => `${item.id}`}
         />;
@@ -93,6 +95,9 @@ export default class Cart extends React.Component {
                     <View style={styles.cart}>
                         <Grid>
                             {cartTable}
+                        </Grid>
+                        <Grid>
+                            <Text>Total: {cart.total}</Text>
                         </Grid>
                     </View>
 
