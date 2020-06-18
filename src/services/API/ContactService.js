@@ -1,9 +1,7 @@
-import BaseService from '../BaseService'
+import BaseService from '../BaseService';
 
 export default class CourseService extends BaseService {
-  async create (params = {}) {
-    const res = await this.post(`/api/v1/contacts`, params)
-
-    return res.data
-  }
+    create = async (params = {}) => {
+        return await this.post(`/api/v1/contacts`, params);
+    };
 }

@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {connect} from 'react-redux'
 import {addToCart, removeItem, addQuantity, subtractQuantity} from '../store/actions/CartAction'
@@ -35,6 +27,7 @@ class CartContainer extends React.Component {
 
 export default connect(
     state => {
+        console.log('state.cart', state.cart)
         return {
             cart: state.cart
         };

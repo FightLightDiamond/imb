@@ -1,33 +1,23 @@
-import BaseService from '../BaseService'
+import BaseService from '../BaseService';
 
 export default class HistoryService extends BaseService {
-  async index (params = {}) {
-    const res = await this.get(`/api/crazy-histories`, params)
+    index = async (params = {}) => {
+        return await this.get(`/api/crazy-histories`, params);
+    };
 
-    return res.data
-  }
+    listen = async (params = {}) => {
+        return await this.get(`/api/crazy-listen-histories`, params);
+    };
 
-  async listen (params = {}) {
-    const res = await this.get(`/api/crazy-listen-histories`, params)
+    read = async (params = {}) => {
+        return await this.get(`/api/crazy-read-histories`, params);
+    };
 
-    return res.data
-  }
+    write = async (params = {}) => {
+        return await this.get(`/api/crazy-write-histories`, params);
+    };
 
-  async read (params = {}) {
-    const res = await this.get(`/api/crazy-read-histories`, params)
-    console.log(res)
-    return res
-  }
-
-  async write (params = {}) {
-    const res = await this.get(`/api/crazy-write-histories`, params)
-
-    return res.data
-  }
-
-  async speak (params = {}) {
-    const res = await this.get(`/api/test/crazy-write/${id}`, params)
-
-    return res.data
-  }
+    speak = async (params = {}) => {
+        const res = await this.get(`/api/test/crazy-write/${id}`, params);
+    };
 }

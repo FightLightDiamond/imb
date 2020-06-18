@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    StyleSheet,
+    // StyleSheet,
     Text,
     View
 } from 'react-native';
@@ -22,7 +22,7 @@ export default class AddProduct extends React.Component {
     }
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const {cart, onAddToCart} = this.props;
+        // const {cart, onAddToCart} = this.props;
 
         return (
             <Modal ref={'myModal'} style={{
@@ -80,12 +80,11 @@ export default class AddProduct extends React.Component {
                         Press me
                     </Button>
                 </View>
-
             </Modal>
         );
     }
 }
 
-const styles = StyleSheet.create({
-
-});
+// const styles = StyleSheet.create({
+//
+// });

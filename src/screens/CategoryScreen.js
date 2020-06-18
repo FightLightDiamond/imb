@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
     FlatList,
@@ -17,7 +9,6 @@ import ProductListItem from '../components/ProductionListItem';
 import FactoryService from '../services/FactoryService';
 
 export default class CategoryScreen extends React.Component {
-
     constructor(props) {
         super(props);
 

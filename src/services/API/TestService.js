@@ -1,39 +1,27 @@
-import BaseService from '../BaseService'
+import BaseService from '../BaseService';
 
 export default class TestService extends BaseService {
-  async listen (id, params = {}) {
-    const res = await this.get(`/api/test/crazy-listen/${id}`, params)
+    listen = async (id, params = {}) => {
+        return  await this.get(`/api/test/crazy-listen/${id}`, params);
+    };
 
-    return res.data
-  }
+    reading = async (id, params = {}) => {
+        return  await this.get(`/api/test/crazy-read/${id}`, params);
+    };
 
-  async reading (id, params = {}) {
-    const res = await this.get(`/api/test/crazy-read/${id}`, params)
+    read = async (id, params = {}) => {
+        return  await this.post(`/api/test/crazy-read/${id}`, params);
+    };
 
-    return res.data
-  }
+    write = async (id, params = {}) => {
+        return  await this.get(`/api/test/crazy-write/${id}`, params);
+    };
 
-  async read (id, params = {}) {
-    const res = await this.post(`/api/test/crazy-read/${id}`, params)
+    written = async (id, params = {}) => {
+        return  await this.post(`/api/test/crazy-write/${id}`, params);
+    };
 
-    return res.data
-  }
-
-  async write (id, params = {}) {
-    const res = await this.get(`/api/test/crazy-write/${id}`, params)
-
-    return res.data
-  }
-
-  async written (id, params = {}) {
-    const res = await this.post(`/api/test/crazy-write/${id}`, params)
-
-    return res.data
-  }
-
-  async speak (id, params = {}) {
-    const res = await this.post(`/api/test/crazy-speak/${id}`, params)
-
-    return res.data
-  }
+    speak = async (id, params = {}) => {
+        return  await this.post(`/api/test/crazy-speak/${id}`, params);
+    };
 }

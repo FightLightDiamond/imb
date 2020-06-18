@@ -16,9 +16,9 @@ export default class Product extends React.Component {
         }
     }
 
-    refreshFlatList = () => {
-
-    }
+    // refreshFlatList = () => {
+    //
+    // }
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {item, onAddToCart} = this.props;

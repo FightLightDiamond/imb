@@ -38,16 +38,16 @@
 				<string>com.googleusercontent.apps.447854677360-33mik4jiubhv7evj1on47g5fs4jgmgsu</string>
 			</array>
 		</dict>
-    <dict>
-      <key>CFBundleTypeRole</key>
-      <string>Editor</string>
-      <key>CFBundleURLName</key>
-          <string>fightlightidamind.cuongpm.tk</string>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fightlightidamind.cuongpm.tk</string>
-      </array>
-    </dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>fightlightidamind.cuongpm.tk</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fightlightidamind.cuongpm.tk</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -89,7 +89,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
