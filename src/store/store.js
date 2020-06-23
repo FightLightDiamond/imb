@@ -1,18 +1,21 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux';
+import AudioReducer from './reducers/AudioReducer';
 import CartReducer from './reducers/CartReducer';
 import LessonReducer from './reducers/LessonReducer';
+import NumberReducer from './reducers/NumberReducer';
 import TaskListReducer from './reducers/TaskListReducer';
-import numberReducer from './reducers/NumberReducer';
+
 import thunk from 'redux-thunk';
 
 const reducers = {
+    audio: AudioReducer,
     cart: CartReducer,
     taskList: TaskListReducer,
-    number: numberReducer,
+    number: NumberReducer,
     lesson: LessonReducer,
-}
+};
 
-const middleware = applyMiddleware(thunk)
+const middleware = applyMiddleware(thunk);
 
 const store = createStore(combineReducers(reducers), middleware);
 

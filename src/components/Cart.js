@@ -8,6 +8,7 @@ import {
     TouchableHighlight,
     View, ScrollView,
 } from 'react-native';
+
 import {Card, Subheading, IconButton} from 'react-native-paper';
 import {Col, Row, Grid} from 'react-native-easy-grid';
 import ProductList from './Shop/ProductList';
@@ -56,7 +57,7 @@ export default class Cart extends React.Component {
 
     _onPressAdd = () => {
         this.refs.addProduct.showAddProduct();
-    }
+    };
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         const {cart, onAddToCart} = this.props;
@@ -104,7 +105,7 @@ export default class Cart extends React.Component {
                     <ProductList items={cart.items} onAddToCart={onAddToCart}/>
 
                 </ScrollView>
-                <AddProduct ref={'addProduct'} />
+                <AddProduct ref={'addProduct'}/>
             </View>
         );
     }

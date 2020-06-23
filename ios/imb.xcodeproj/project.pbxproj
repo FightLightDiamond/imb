@@ -45,6 +45,13 @@
 			remoteGlobalIDString = 9FD355121D3E4A2900D06170;
 			remoteInfo = RNGoogleSignin;
 		};
+		8D6F7FB924A067F600B3CFBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D6F7FB424A067F600B3CFBC /* RNMomosdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNMomosdk;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +93,7 @@
 		8D18C9122480EBBC00BF587C /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		8D5FD74F248B461D00712B1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D5FD751248BD1C200712B1F /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNGoogleSignin.xcodeproj; path = "../node_modules/@react-native-community/google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; };
+		8D6F7FB424A067F600B3CFBC /* RNMomosdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMomosdk.xcodeproj; path = "../node_modules/react-native-momosdk/ios/RNMomosdk.xcodeproj"; sourceTree = "<group>"; };
 		9761E8612058E9EBE5EEA409 /* libPods-imb.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-imb.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F2BB3C114EA7D945FA8C2F /* Pods-imb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imb.release.xcconfig"; path = "Target Support Files/Pods-imb/Pods-imb.release.xcconfig"; sourceTree = "<group>"; };
 		B1875A88938D88C2ACDF672B /* Pods-imb-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-imb-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-imb-tvOSTests/Pods-imb-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +207,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				8D6F7FB424A067F600B3CFBC /* RNMomosdk.xcodeproj */,
 				8D5FD751248BD1C200712B1F /* RNGoogleSignin.xcodeproj */,
 			);
 			name = Libraries;
@@ -259,6 +268,14 @@
 			isa = PBXGroup;
 			children = (
 				8D5FD756248BD1C200712B1F /* libRNGoogleSignin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8D6F7FB524A067F600B3CFBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D6F7FBA24A067F600B3CFBC /* libRNMomosdk.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,6 +455,10 @@
 					ProductGroup = 8D5FD752248BD1C200712B1F /* Products */;
 					ProjectRef = 8D5FD751248BD1C200712B1F /* RNGoogleSignin.xcodeproj */;
 				},
+				{
+					ProductGroup = 8D6F7FB524A067F600B3CFBC /* Products */;
+					ProjectRef = 8D6F7FB424A067F600B3CFBC /* RNMomosdk.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -455,6 +476,13 @@
 			fileType = archive.ar;
 			path = libRNGoogleSignin.a;
 			remoteRef = 8D5FD755248BD1C200712B1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D6F7FBA24A067F600B3CFBC /* libRNMomosdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNMomosdk.a;
+			remoteRef = 8D6F7FB924A067F600B3CFBC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

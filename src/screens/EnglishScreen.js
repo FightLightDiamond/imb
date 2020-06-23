@@ -6,9 +6,9 @@ import store from '../store/store';
 export default class EnglishScreen extends React.Component {
     componentDidMount(): * {
         const {navigation} = this.props;
-        const {route} = this.props;
-        const {params} = route;
-        navigation.setOptions({title: 'ABC'});
+        // const {route} = this.props;
+        // const {params} = route;
+        navigation.setOptions({title: 'English'});
     }
     render(): boolean | number | string | React$Element<*> | React$Portal | Iterable | null {
         const {navigation} = this.props;

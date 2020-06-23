@@ -91,6 +91,8 @@ target 'imb' do
 
   pod 'RNGoogleSignin', :path => '../node_modules/@react-native-community/google-signin'
 
+  pod 'RNMomosdk', :path => '../node_modules/react-native-momosdk'
+
   target 'imbTests' do
     inherit! :complete
     # Pods for testing
