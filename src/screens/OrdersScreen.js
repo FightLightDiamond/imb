@@ -72,7 +72,9 @@ export default class OrdersScreen extends React.Component {
         jsonData.amount = amount;//order total amount
         jsonData.orderId = 'ID201811231flspz';
         jsonData.orderLabel = 'Ma don hang';
-        jsonData.appScheme = 'momocgv20170101';// iOS App Only , match with Schemes Indentify from your  Info.plist > key URL types > URL Schemes
+        jsonData.appScheme = 'momoswgm20200616';
+        // iOS App Only , match with Schemes Indentify from your
+        // Info.plist > key URL types > URL Schemes
         console.log('data_request_payment ' + JSON.stringify(jsonData));
         if (Platform.OS === 'android') {
             let dataPayment = await RNMomosdk.requestPayment(jsonData);

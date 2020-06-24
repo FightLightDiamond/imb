@@ -11,7 +11,7 @@ const audioReducer = (state = audioState, action) => {
     switch (action.type) {
         case GET_AUDIO:
             state.audio.stop();
-
+            console.log('action.payload', action.payload)
             return {...state, audio: new Sound(action.payload)};
         case PLAY_AUDIO:
             state.audio.play();

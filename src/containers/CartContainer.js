@@ -27,7 +27,6 @@ class CartContainer extends React.Component {
 
 export default connect(
     state => {
-        console.log('state.cart', state.cart)
         return {
             cart: state.cart
         };
