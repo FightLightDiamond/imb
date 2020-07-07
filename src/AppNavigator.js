@@ -3,20 +3,22 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {EnglishStackScreen} from './navigators/EnglishNavigator';
-import {CartStackScreen, OrdersStackScreen, SettingStackScreen, CategoryStackScreen} from './navigators/CartNavigator'
+import {CartStackScreen, OrdersStackScreen, SettingStackScreen, AoeRandomStackScreen} from './navigators/CartNavigator'
 export const AppNavigator = () => {
     const Tab = createBottomTabNavigator();
 
     const icons = {
         focused: {
-            Home: 'home',
+            // Home: 'home',
+            AoeRandom: 'book',
             Cart: 'shopping-cart',
             Orders: 'book',
             Setting: 'settings',
             English: 'settings',
         },
         normal: {
-            Home: 'home',
+            AoeRandom: 'book',
+            // Home: 'home',
             Cart: 'shopping-cart',
             Orders: 'book',
             Setting: 'settings',
@@ -41,8 +43,9 @@ export const AppNavigator = () => {
                     inactiveTintColor: 'gray',
                 }}
             >
+                <Tab.Screen name="AoeRandom" component={AoeRandomStackScreen}/>
                 <Tab.Screen name="English" component={EnglishStackScreen}/>
-                <Tab.Screen name="Home" component={CategoryStackScreen}/>
+                {/*<Tab.Screen name="Home" component={CategoryStackScreen}/>*/}
                 <Tab.Screen name="Cart" component={CartStackScreen}/>
                 <Tab.Screen name="Orders" component={OrdersStackScreen}/>
                 <Tab.Screen name="Setting" component={SettingStackScreen}/>

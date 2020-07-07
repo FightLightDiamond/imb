@@ -18,6 +18,7 @@ const EnglishStackScreen = () => {
             option={{title: 'Lesson'}}
         />
     </EnglishStack.Navigator>
+
     return (navigator);
 };
 

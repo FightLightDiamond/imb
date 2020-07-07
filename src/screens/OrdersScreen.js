@@ -11,7 +11,8 @@ const RNMomosdkModule = NativeModules.RNMomosdk;
 const EventEmitter = new NativeEventEmitter(RNMomosdkModule);
 
 const merchantname = 'CGV Cinemas';
-const merchantcode = 'MOMOSWGM20200616';
+const merchantcode = 'MOMOWXAF20200616';
+const appScheme = 'momowxaf20200616';
 const merchantNameLabel = 'Nhà cung cấp';
 const billdescription = 'Fast and Furious 8';
 const amount = 50000;
@@ -26,7 +27,7 @@ export default class OrdersScreen extends React.Component {
         this.state = {};
     }
 
-    componentDidMount(): * {
+    componentDidMount() {
         const {navigation} = this.props;
         // const {route} = this.props;
         // const {params} = route;
@@ -37,13 +38,16 @@ export default class OrdersScreen extends React.Component {
                 console.log('<MoMoPay>Listen.Event::' + JSON.stringify(response));
                 if (response && response.status == 0) {
                     //SUCCESS: continue to submit momoToken,phonenumber to server
-                    let fromapp = response.fromapp; //ALWAYS:: fromapp==momotransfer
+                    let fromapp = response.fromapp; //ALWAYS:: fromapp==
+
                     let momoToken = response.data;
                     let phonenumber = response.phonenumber;
                     let message = response.message;
                     let orderId = response.refOrderId;
+
+                    alert('TOKEN' + momoToken)
                 } else {
-                    alert('RCTMoMoNoficationCenterRequestTokenReceived' + response.message)
+                    alert('RCTMoMoNoficationCenterRequestTokenReceived: ' + response.message)
                     //let message = response.message;
                     //Has Error: show message here
                 }
@@ -52,8 +56,10 @@ export default class OrdersScreen extends React.Component {
         });
         //OPTIONAL
         EventEmitter.addListener('RCTMoMoNoficationCenterRequestTokenState', (response) => {
+            alert('RCTMoMoNoficationCenterRequestTokenState')
             console.log('<MoMoPay>Listen.RequestTokenState:: ' + response.status);
-            alert(response.message)
+           // alert('RCTMoMoNoficationCenterRequestTokenState: ' + response.message)
+           //  alert('RCTMoMoNoficationCenterRequestTokenState: ' + response.status)
             // status = 1: Parameters valid & ready to open MoMo app.
             // status = 2: canOpenURL failed for URL MoMo app
             // status = 3: Parameters invalid
@@ -70,9 +76,9 @@ export default class OrdersScreen extends React.Component {
         jsonData.merchantnamelabel = merchantNameLabel;
         jsonData.description = billdescription;
         jsonData.amount = amount;//order total amount
-        jsonData.orderId = 'ID201811231flspz';
+        jsonData.orderId = Math.random().toString(36).substring(7);;
         jsonData.orderLabel = 'Ma don hang';
-        jsonData.appScheme = 'momoswgm20200616';
+        jsonData.appScheme = appScheme;
         // iOS App Only , match with Schemes Indentify from your
         // Info.plist > key URL types > URL Schemes
         console.log('data_request_payment ' + JSON.stringify(jsonData));
@@ -86,6 +92,9 @@ export default class OrdersScreen extends React.Component {
     };
 
     async momoHandleResponse(response) {
+        alert('momoHandleResponse')
+
+        console.log('momoHandleResponse', response)
         try {
             if (response && response.status == 0) {
                 //SUCCESS continue to submit momoToken,phonenumber to server
@@ -93,13 +102,15 @@ export default class OrdersScreen extends React.Component {
                 let momoToken = response.data;
                 let phonenumber = response.phonenumber;
                 let message = response.message;
-
+                console.log('momoHandleResponse: ', momoToken)
+                alert('Token: ' + momoToken)
             } else {
                 //let message = response.message;
-                alert(response.message);
+                alert("Has Error: show message here" + response.message);
                 //Has Error: show message here
             }
         } catch (ex) {
+            console.log('momoHandleResponse ex', ex)
         }
     }
 

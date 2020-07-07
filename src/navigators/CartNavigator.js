@@ -1,5 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import AoeRandomScreen from '../screens/AoeRandomScreen';
 import CartScreen from '../screens/CartScreen';
 import CategoriesScreen from '../screens/CategoriesScreen';
 import CategoryScreen from '../screens/CategoryScreen';
@@ -76,4 +77,19 @@ const SettingStackScreen = () => {
     );
 };
 
-export {CartStackScreen, OrdersStackScreen, SettingStackScreen, CategoryStackScreen}
+
+const AoeRandomStack= new createStackNavigator();
+
+const AoeRandomStackScreen = () => {
+    return (
+        <AoeRandomStack.Navigator>
+            <AoeRandomStack.Screen
+                name="AoeRandom"
+                component={AoeRandomScreen}
+                options={{title: 'Aoe Random'}}
+            />
+        </AoeRandomStack.Navigator>
+    );
+};
+
+export {CartStackScreen, OrdersStackScreen, SettingStackScreen, CategoryStackScreen, AoeRandomStackScreen}

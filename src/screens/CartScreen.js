@@ -3,11 +3,12 @@ import {
     // StyleSheet,
     View,
 } from 'react-native';
-import {Provider} from 'react-redux';
+
 // import AddView from '../containers/Task/AddViewContainer'
 // import CounterContainer from '../containers/Task/CounterContainer';
 // import TaskFlatList from '../containers/Task/TaskFlatListContainer'
 import CartContainer from '../containers/CartContainer'
+import {Provider} from 'react-redux';
 import store from '../store/store';
 
 export default class CartScreen extends React.Component {

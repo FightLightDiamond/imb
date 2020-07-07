@@ -1,54 +1,118 @@
 {
   "categories": [
-    {"id": 1, "name": "Darklord", "img": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220548.jpeg"},
-    {"id": 2, "name": "Spinx", "img": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220553.jpeg"},
-    {"id": 3, "name": "Valkyrie", "img": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220215.jpeg"}
+    {
+      "id": 1,
+      "name": "Darklord",
+      "img": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220548.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Spinx",
+      "img": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220553.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Valkyrie",
+      "img": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220215.jpeg"
+    }
   ],
   "products": [
     {
       "id": 1,
-      "image": [{
-        "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220548.jpeg"
-      }],
+      "image": [
+        {
+          "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220548.jpeg"
+        }
+      ],
       "name": "Darklord",
       "price": 550,
       "category_id": 1
     },
     {
       "id": 2,
-      "image": [{
-        "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220215.jpeg"
-      }],
+      "image": [
+        {
+          "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220215.jpeg"
+        }
+      ],
       "name": "Valkyrie",
       "price": 550,
       "category_id": 1
     },
     {
       "id": 3,
-      "image": [{
-        "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220553.jpeg"
-      }],
+      "image": [
+        {
+          "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220553.jpeg"
+        }
+      ],
       "name": "Spinx",
       "price": 550,
       "category_id": 2
     },
     {
       "id": 4,
-      "image": [{
-        "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220608.jpeg"
-      }],
+      "image": [
+        {
+          "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220608.jpeg"
+        }
+      ],
       "name": "Poseidon",
       "price": 550,
       "category_id": 2
     },
     {
       "id": 5,
-      "image": [{
-        "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220612.jpeg"
-      }],
+      "image": [
+        {
+          "url": "https://pyrainfo.files.wordpress.com/2020/01/screenshot_20200109-220612.jpeg"
+        }
+      ],
       "name": "Loki",
       "price": 550,
       "category_id": 3
+    }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": "1889798"
+    },
+    {
+      "id": 2,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": "18788000"
+    },
+    {
+      "id": 3,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": 16888
+    },
+    {
+      "id": 4,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": 15888
+    },
+    {
+      "id": 5,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": 18488
+    },
+    {
+      "id": 6,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": 18388
+    },
+    {
+      "id": 7,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": 18288
+    },
+    {
+      "id": 8,
+      "name": "The Ghost and the Darkness",
+      "releaseYear": 18818
     }
   ]
 }
