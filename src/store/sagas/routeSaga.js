@@ -3,7 +3,7 @@ import {delay} from 'redux-saga';
 import {all, call, fork} from 'redux-saga/effects'
 
 // import {sayHello, watchDecrement, watchIncrement} from './counterSaga';
-import {watchFetchMovies, watchAddMovie, watchUpdateMovie} from './movieSaga';
+import {watchFetchMovies, watchAddMovie, watchUpdateMovie, watchDeleteMovie} from './movieSaga';
 
 export default function* rootSaga() {
     // Chạy tuần tự
@@ -18,9 +18,17 @@ export default function* rootSaga() {
     //     fork(call(watchFetchMovies)),
     //     fork(call(watchAddMovie)),
     // ]
+    function* movieSaga()
+    {
+        yield all([
+            fork(watchFetchMovies),
+            fork(watchAddMovie),
+            fork(watchUpdateMovie),
+            fork(watchDeleteMovie),
+        ])
+    }
+
     yield all([
-        call(watchFetchMovies),
-        call(watchAddMovie),
-        call(watchUpdateMovie)
+        movieSaga(),
     ])
 }

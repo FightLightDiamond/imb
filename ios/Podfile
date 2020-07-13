@@ -79,19 +79,15 @@ target 'imb' do
 
 
 
-  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Firestore'
 
-  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
 
   pod 'GoogleSignIn', '~> 5.0.2'
 
-  pod 'RNGoogleSignin', :path => '../node_modules/@react-native-community/google-signin'
 
-  pod 'RNMomosdk', :path => '../node_modules/react-native-momosdk'
 
   target 'imbTests' do
     inherit! :complete
@@ -119,4 +115,3 @@ target 'imb-tvOS' do
   end
 end
 
-pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'

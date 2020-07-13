@@ -40,9 +40,8 @@ export default class FlatListItem extends React.Component {
                                 },
                                 {
                                     text: 'Yes', onPress: () => {
-                                        const {movieComponent} = this.props
-
-
+                                        const {movieComponent, onDel, id} = this.props
+                                        onDel(id)
                                     },
                                 },
                             ],

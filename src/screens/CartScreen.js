@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Button,
     // StyleSheet,
     View,
 } from 'react-native';
@@ -19,7 +20,18 @@ export default class CartScreen extends React.Component {
 
     componentDidMount(): * {
         const {navigation} = this.props;
-        navigation.setOptions({title: 'Cart'});
+
+        navigation.setOptions({
+            title: 'Cart',
+            headerLeft: () => (
+                <Button
+                    onPress={() => navigation.toggleDrawer()}
+                    title="Drawer"
+                />
+            ),
+        });
+
+        navigation.setParams({});
     }
 
     render(): boolean | number | string | React$Element<*> | React$Portal | Iterable | null {

@@ -10,7 +10,7 @@ export default class EditModal extends React.Component {
         super(props);
 
         this.state = {
-            id,
+            id: '',
             name: '',
             releaseYear: '',
         };

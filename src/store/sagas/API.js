@@ -6,16 +6,16 @@ function* getMoviesFromAPI() {
     return yield res.status === 200 ? res : [];
 }
 
-function fetchMovies() {
-    return fetch(urlMovie)
+const fetchMovies = async () => {
+    return await fetch(urlMovie)
         .then(response => response.json())
         .then(result => {
             return result;
         });
 }
 
-function* insertNewMovieFromAPI(newMovie) {
-    return fetch(urlMovie, {
+const insertNewMovieFromAPI = async newMovie => {
+    return await fetch(urlMovie, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -29,8 +29,8 @@ function* insertNewMovieFromAPI(newMovie) {
         });
 }
 
-function* updateMovieFromAPI(updatedMovie) {
-    return fetch(`${urlMovie}/${updatedMovie.id}`, {
+const updateMovieFromAPI = async (updatedMovie) => {
+    return await fetch(`${urlMovie}/${updatedMovie.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -43,8 +43,23 @@ function* updateMovieFromAPI(updatedMovie) {
         });
 }
 
+const deleteMovieFromAPI = async (id) => {
+    return await fetch(`${urlMovie}/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: '',
+    })
+        .then(response => response.json())
+        .then(result => {
+            return result;
+        });
+}
+
 export const API = {
     // getMoviesFromAPI,
+    deleteMovieFromAPI,
     fetchMovies,
     insertNewMovieFromAPI,
     updateMovieFromAPI,

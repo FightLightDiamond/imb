@@ -1,50 +1,89 @@
-import {ADD_MOVIE, FETCH_MOVIE, FETCH_FAILED, FETCH_SUCCEEDED, UPDATE_MOVIE, UPDATE_SUCCEEDED, UPDATE_FAILED} from './action-types/MovieActionType';
+import {
+    ADD_MOVIE, FETCH_MOVIE, FETCH_FAILED, FETCH_SUCCEEDED, UPDATE_MOVIE,
+    UPDATE_SUCCEEDED,
+    DELETE_MOVIE,
+    DELETE_SUCCEEDED, DELETE_FAILED, UPDATE_FAILED,
+} from './action-types/MovieActionType';
 
-export const addMovieAction = (newMovie) => {
+const addMovieAction = (newMovie) => {
     return {
         type: ADD_MOVIE,
         newMovie,
     }
 }
 
-export const fetchMovieAction = (sort) => {
+const fetchMovieAction = (sort) => {
     return {
         type: FETCH_MOVIE,
         sort
     }
 }
 
-export const fetchSuccessAction = (receivedMovies) => {
+const fetchSuccessAction = (receivedMovies) => {
     return {
         type: FETCH_SUCCEEDED,
         receivedMovies
     }
 }
 
-export const fetchFailAction = (error) => {
+const fetchFailAction = (error) => {
     return {
         type: FETCH_FAILED,
         payload: error
     }
 }
 
-export const updateMovieAction = (updatedMovie) => {
+const updateMovieAction = (updatedMovie) => {
     return {
         type: UPDATE_MOVIE,
         updatedMovie
     }
 }
 
-export const updateSuccessAction = (updatedMovie) => {
+const updateSuccessAction = (updatedMovie) => {
     return {
-        type: UPDATE_MOVIE,
+        type: UPDATE_SUCCEEDED,
         updatedMovie
     }
 }
 
-export const updateFailAction = (movie) => {
+const updateFailAction = (movie) => {
     return {
-        type: UPDATE_MOVIE,
+        type: UPDATE_FAILED,
         movie
     }
+}
+
+const delMovieAction = (id) => {
+    return {
+        type: DELETE_MOVIE,
+        id
+    }
+}
+
+const delSuccessAction = (id) => {
+    return {
+        type: DELETE_SUCCEEDED,
+        id
+    }
+}
+
+const delFailAction = (movie) => {
+    return {
+        type: DELETE_FAILED,
+        id
+    }
+}
+
+export {
+    addMovieAction,
+    fetchMovieAction,
+    fetchSuccessAction,
+    fetchFailAction,
+    updateMovieAction,
+    updateSuccessAction,
+    updateFailAction,
+    delMovieAction,
+    delSuccessAction,
+    delFailAction
 }

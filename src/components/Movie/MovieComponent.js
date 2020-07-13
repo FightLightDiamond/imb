@@ -14,7 +14,7 @@ export default class MovieComponent extends React.Component {
     }
 
     render(): React.ReactElement<any> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-        const {onAdd, onFetch, onUpdate, movies} = this.props;
+        const {onAdd, onFetch, onUpdate, onDel, movies} = this.props;
 
         return (
             <View>
@@ -35,26 +35,31 @@ export default class MovieComponent extends React.Component {
                     <Button onPress={() => onFetch('asc')}
                             title={'Fetch'}/>
 
-                    <Button onPress={() => {
-                        const {name, releaseYear} = this.state;
+                    <Button
+                        onPress={
+                            () => {
+                                const {name, releaseYear} = this.state;
 
-                        if (!name.length || !releaseYear.length) {
-                            alert('You must enter movie name and release releaseYear');
-                            return;
+                                if (!name.length || !releaseYear.length) {
+                                    alert('You must enter movie name and release releaseYear');
+                                    return;
+                                }
+
+                                onAdd({name: name, releaseYear: releaseYear});
+                            }
                         }
-
-                        onAdd({name: name, releaseYear: releaseYear});
-                    }}
-                            title={'Add'}/>
+                        title={'Add'}/>
                 </View>
 
                 <FlatList
                     data={movies}
-                    keyExtractor={item => item.id + ""}
+                    keyExtractor={item => item.id + ''}
                     renderItem={
-                        ({item, index}) => <FlatListItem {...item}
-                                                         itemIndex={index}
-                                                         movieComponent={this}
+                        ({item, index}) => <FlatListItem
+                            {...item}
+                            itemIndex={index}
+                            onDel={onDel}
+                            movieComponent={this}
                         />
 
                     }
@@ -63,6 +68,8 @@ export default class MovieComponent extends React.Component {
                 <EditModel ref={'editModal'}
                            onUpdate={onUpdate}
                            movieComponent={this}/>
+
+
             </View>
         );
     }
